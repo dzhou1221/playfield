@@ -1,5 +1,9 @@
 pipeline {
   agent any
+
+  tools {
+    
+  }
   environment {
     NEW_VERSION = '1.1.0'
     SERVER_CREDENTIALS = credentials('my-git-playfield')
@@ -29,11 +33,6 @@ pipeline {
       steps {
         echo 'deploying the application'
         echo "${SERVER_CREDENTIALS}"
-        withCredentials([
-          usernamePassword(credentials: 'my-git-playfield', usernameVariable: USER, passwordVeriable: PWD)
-        ]) {
-          sh "some script ${USER} ${PWD}"
-        }
       }
     }
 
